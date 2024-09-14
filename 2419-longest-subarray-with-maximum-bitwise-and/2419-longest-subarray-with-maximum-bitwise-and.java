@@ -1,27 +1,23 @@
 class Solution {
     public int longestSubarray(int[] nums) {
-        int maxVal = Integer.MIN_VALUE;
-        int longestLength = 0;
-        int currentLength = 0;
+     int max_Val = nums[0];
+        int max_Len = 1;
+        int current_Len = 1;
 
-        // Step 1: Find the maximum value in the array
-        for (int num : nums) {
-            if (num > maxVal) {
-                maxVal = num;
-            }
-        }
-
-        // Step 2: Find the longest subarray where all elements equal the maxVal
-        for (int num : nums) {
-            if (num == maxVal) {
-                currentLength++;  // Increase length of the current subarray
-                longestLength = Math.max(longestLength, currentLength);  // Update longest length
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > max_Val) {
+                max_Val = nums[i];
+                max_Len = 1;
+                current_Len = 1;
+            } else if (nums[i] == max_Val) {
+                current_Len++;
+                max_Len = Math.max(max_Len, current_Len);
             } else {
-                currentLength = 0;  // Reset the current length when the value is different
+                current_Len = 0;
             }
         }
 
-        return longestLength;
+        return max_Len;
     
     }
 }
