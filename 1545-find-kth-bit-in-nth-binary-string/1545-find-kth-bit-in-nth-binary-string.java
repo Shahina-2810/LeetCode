@@ -5,8 +5,7 @@ class Solution {
             return findKthBit(n-1,k);
         if(k==(1<<n)/2)
             return '1';
-        else{
+        else
             return (findKthBit(n-1,(1<<n)-k) == '0') ? '1' : '0';
-        }
     }
 }
